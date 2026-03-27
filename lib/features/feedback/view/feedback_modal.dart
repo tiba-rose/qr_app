@@ -133,7 +133,7 @@ class _FeedbackSheetState extends State<_FeedbackSheet> {
                           } else {
                             _showSnack(
                               context,
-                              'حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى',
+                              _viewModel.errorMessage ?? 'حدث خطأ أثناء الإرسال',
                               Colors.red.shade800,
                             );
                           }

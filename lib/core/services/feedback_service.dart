@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,7 +8,7 @@ import 'package:http/http.dart' as http;
 class FeedbackService {
   /// Paste your Apps Script deployment URL here.
   static const String _scriptUrl =
-      'https://script.google.com/macros/s/AKfycbwjXQKvMmuTyih47EJeZw8kU6jOWiJzrCU_pyqqtU_ecEArsjY-kYkTI9rughito3Wkxw/exec';
+      'https://script.google.com/macros/s/AKfycbxZU_DmhgrDOazbl2jbd_kOOyb59AC6LSI6hti5BEXi1k5QOmksBYTEBAaihZ9sqVUY/exec';
 
   Future<void> submit({
     required String name,
@@ -19,24 +17,21 @@ class FeedbackService {
     required int rating,
     required String message,
   }) async {
-    final payload = {
+    // GET with query parameters avoids CORS preflight issues that occur
+    // with POST requests to Google Apps Script on both web and some mobile
+    // network configurations. Apps Script exposes these via e.parameter.
+    final uri = Uri.parse(_scriptUrl).replace(queryParameters: {
       'name': name,
       'phone': phone,
       'department': department,
-      'rating': rating,
+      'rating': rating.toString(),
       'message': message,
-    };
+    });
 
-    debugPrint('Submitting feedback: $payload');
+    debugPrint('Submitting feedback to: $uri');
 
-    final response = await http.post(
-      Uri.parse(_scriptUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(payload),
-    );
+    final response = await http.get(uri);
 
-    // Google Apps Script redirects POST requests and the final response
-    // body may be HTML rather than JSON — so we only check the status code.
     if (response.statusCode < 200 || response.statusCode >= 400) {
       throw Exception('Server error: ${response.statusCode}');
     }

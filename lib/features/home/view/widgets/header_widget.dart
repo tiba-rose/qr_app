@@ -102,29 +102,27 @@ class _LogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 82,
-      height: 82,
+      width: 90,
+      height: 90,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
         color: Colors.white,
-        border: Border.all(color: AppColors.gold, width: 2),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: AppColors.gold.withOpacity(0.4),
-            blurRadius: 16,
-            spreadRadius: 2,
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
-      child: ClipOval(
-        child: Image.asset(
-          AppStrings.logoAsset,
-          fit: BoxFit.contain,
-          errorBuilder: (_, __, ___) => const Icon(
-            Icons.local_florist_outlined,
-            size: 40,
-            color: AppColors.maroon,
-          ),
+      padding: const EdgeInsets.all(8),
+      child: Image.asset(
+        AppStrings.logoAsset,
+        fit: BoxFit.contain,
+        errorBuilder: (_, __, ___) => const Icon(
+          Icons.local_florist_outlined,
+          size: 40,
+          color: AppColors.maroon,
         ),
       ),
     );
