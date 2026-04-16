@@ -11,6 +11,9 @@ class PhotoSliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenH = MediaQuery.of(context).size.height;
+    final sliderH = (screenH * 0.28).clamp(180.0, 320.0);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       child: DecoratedBox(
@@ -27,7 +30,7 @@ class PhotoSliderWidget extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(24),
           child: SizedBox(
-            height: 240,
+            height: sliderH,
             child: Stack(
               children: [
                 PageView.builder(
@@ -84,7 +87,6 @@ class _SlideImage extends StatelessWidget {
     return Image.asset(
       slide.assetPath,
       width: double.infinity,
-      height: 240,
       fit: BoxFit.cover,
       errorBuilder: (_, __, ___) => const _Placeholder(),
     );

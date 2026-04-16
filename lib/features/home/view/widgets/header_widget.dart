@@ -22,16 +22,16 @@ class HeaderWidget extends StatelessWidget {
           bottomRight: Radius.circular(36),
         ),
       ),
-      padding: EdgeInsets.fromLTRB(24, topPad + 28, 24, 28),
+      padding: EdgeInsets.fromLTRB(24, topPad + 24, 24, 24),
       child: Column(
         children: [
           _LogoWidget(),
-          const SizedBox(height: 16),
-          const Text(
+          const SizedBox(height: 14),
+          Text(
             'TIBA ROSE HOTELS',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 20,
+              fontSize: (MediaQuery.of(context).size.width * 0.052).clamp(16.0, 24.0),
               fontWeight: FontWeight.w800,
               letterSpacing: 4,
             ),
@@ -43,7 +43,7 @@ class HeaderWidget extends StatelessWidget {
             AppStrings.hotelSubtitle,
             style: TextStyle(
               color: AppColors.gold.withOpacity(0.9),
-              fontSize: 13,
+              fontSize: (MediaQuery.of(context).size.width * 0.032).clamp(11.0, 15.0),
               fontWeight: FontWeight.w400,
               letterSpacing: 2.5,
             ),

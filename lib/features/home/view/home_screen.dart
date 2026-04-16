@@ -45,19 +45,24 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.background,
       resizeToAvoidBottomInset: false,
       // No AppBar — the header widget is part of the body
-      body: Column(
-        children: [
-          const HeaderWidget(),
-          const SizedBox(height: 20),
-          PhotoSliderWidget(viewModel: _viewModel),
-          const SizedBox(height: 24),
-          ActionButtonsWidget(
-            onFeedbackTap: _onFeedbackTap,
-            onMenuTap: _onMenuTap,
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 640),
+          child: Column(
+            children: [
+              const HeaderWidget(),
+              const SizedBox(height: 20),
+              PhotoSliderWidget(viewModel: _viewModel),
+              const SizedBox(height: 24),
+              ActionButtonsWidget(
+                onFeedbackTap: _onFeedbackTap,
+                onMenuTap: _onMenuTap,
+              ),
+              const Spacer(),
+              const FooterWidget(),
+            ],
           ),
-          const Spacer(),
-          const FooterWidget(),
-        ],
+        ),
       ),
     );
   }

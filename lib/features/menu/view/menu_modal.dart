@@ -11,7 +11,12 @@ void showMenuModal(BuildContext context) {
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     barrierColor: Colors.black.withOpacity(0.55),
-    builder: (_) => const _MenuSheet(),
+    builder: (_) => Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 640),
+        child: const _MenuSheet(),
+      ),
+    ),
   );
 }
 

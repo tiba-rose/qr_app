@@ -69,7 +69,7 @@ class _WideActionCard extends StatelessWidget {
         onTap: item.onTap,
         borderRadius: BorderRadius.circular(20),
         child: Ink(
-          height: 86,
+          height: (MediaQuery.of(context).size.height * 0.1).clamp(72.0, 96.0),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
@@ -113,9 +113,9 @@ class _WideActionCard extends StatelessWidget {
                       Text(
                         item.arabicLabel,
                         textDirection: TextDirection.rtl,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
-                          fontSize: 17,
+                          fontSize: (MediaQuery.of(context).size.width * 0.044).clamp(14.0, 19.0),
                           fontWeight: FontWeight.w800,
                           letterSpacing: 0.3,
                         ),
@@ -125,7 +125,7 @@ class _WideActionCard extends StatelessWidget {
                         item.englishLabel,
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.75),
-                          fontSize: 13,
+                          fontSize: (MediaQuery.of(context).size.width * 0.032).clamp(11.0, 15.0),
                           fontWeight: FontWeight.w400,
                           letterSpacing: 0.8,
                         ),
