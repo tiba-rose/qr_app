@@ -48,12 +48,6 @@ class MenuViewModel {
       color: Color(0xFF006A71),
       url: 'https://drive.google.com/drive/folders/1wb5WIJsnVwi3sUHn24FMLw2A1EuPA_vo',
     ),
-    MenuItem(
-      name: 'Ramadan Menu',
-      icon: Icons.nightlight_round,
-      color: Color(0xFF004349),
-      url: 'https://drive.google.com/drive/folders/151LyMudpOoDQ5a5n8by7z6xvPGeD7L5B',
-    ),
   ];
 
   /// Opens the menu URL in the device's default browser.
