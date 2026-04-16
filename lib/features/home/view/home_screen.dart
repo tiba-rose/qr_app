@@ -48,19 +48,29 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
-          child: Column(
-            children: [
-              const HeaderWidget(),
-              const SizedBox(height: 20),
-              PhotoSliderWidget(viewModel: _viewModel),
-              const SizedBox(height: 24),
-              ActionButtonsWidget(
-                onFeedbackTap: _onFeedbackTap,
-                onMenuTap: _onMenuTap,
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: MediaQuery.of(context).size.height,
               ),
-              const Spacer(),
-              const FooterWidget(),
-            ],
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    const HeaderWidget(),
+                    const SizedBox(height: 20),
+                    PhotoSliderWidget(viewModel: _viewModel),
+                    const SizedBox(height: 24),
+                    ActionButtonsWidget(
+                      onFeedbackTap: _onFeedbackTap,
+                      onMenuTap: _onMenuTap,
+                    ),
+                    const Spacer(),
+                    const FooterWidget(),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
