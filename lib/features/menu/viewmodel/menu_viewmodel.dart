@@ -48,6 +48,12 @@ class MenuViewModel {
       color: Color(0xFF006A71),
       url: 'https://drive.google.com/drive/folders/1wb5WIJsnVwi3sUHn24FMLw2A1EuPA_vo',
     ),
+    MenuItem(
+      name: 'Tennis Menu',
+      icon: Icons.sports_tennis,
+      color: Color(0xFF48A6A7),
+      url: 'https://drive.google.com/drive/folders/1fHN_fSZQa8X2hQEErvV7Bc2VNNynfW3S',
+    ),
   ];
 
   /// Opens the menu URL in the device's default browser.
